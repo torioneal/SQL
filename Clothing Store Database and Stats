@@ -1,8 +1,8 @@
---Create a clothing store database
+--This is my first SQL project.
 
+--Create a clothing store database
 CREATE TABLE clothing (id integer primary key, name text, quantity integer, color text, price integer);
 
-#These are my items for sale
 INSERT INTO clothing VALUES
 (1, "shirt", 3, "red", 10),
 (2, "shirt", 3, "blue", 15),
