@@ -1,0 +1,26 @@
+--Create a clothing store database
+
+CREATE TABLE clothing (id integer primary key, name text, quantity integer, color text, price integer);
+
+#These are my items for sale
+INSERT INTO clothing VALUES
+(1, "shirt", 3, "red", 10),
+(2, "shirt", 3, "blue", 15),
+(3, "shirt", 3, "green", 20);
+
+INSERT INTO clothing VALUES
+(4, "pants", 3, "white", 30),
+(5, "pants", 3, "black", 40);
+
+--display the items ordered by price above and below 20
+SELECT * FROM clothing WHERE price >20 ORDER BY price desc;
+
+SELECT * FROM clothing WHERE price <=20 ORDER BY price asc;
+
+--what is the total number of items for sale?
+SELECT SUM(quantity) FROM clothing;
+
+--what is the highest priced item for sale in each name category?
+SELECT MAX(price) FROM clothing;
+
+SELECT MAX(price) FROM clothing GROUP BY name;
