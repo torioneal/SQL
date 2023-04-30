@@ -1,0 +1,48 @@
+--I've created three tables containing information about authors, books, and series in my personal library with each table having related data.
+create table authors (id integer primary key autoincrement, fullname text, genre text);
+
+create table series (id integer primary key autoincrement, name text, author_id integer);
+
+create table books (id integer primary key autoincrement, title text, author_id integer, series_id integer);
+
+
+insert into authors (fullname, genre) values ('Sarah J Maas', 'fantasy');
+insert into authors (fullname, genre) values ('Suzanne Collins', 'dystopian');
+insert into authors (fullname, genre) values ('Frank Herbert', 'scifi');
+
+
+insert into series (name, author_id) values ('A Court of Thorns and Roses', 1);
+insert into series (name, author_id) values ('The Hunger Games', 2);
+insert into series (name, author_id) values ('Dune', 3);
+
+
+insert into books (title, author_id, series_id) values('A Court of Thorns and Roses', 1, 1);
+insert into books (title, author_id, series_id) values('A Court of Mist and Fury', 1, 1);
+insert into books (title, author_id, series_id) values('A Court of Wings and Ruin', 1, 1);
+insert into books (title, author_id, series_id) values('A Court of Frost and Starlight', 1, 1);
+insert into books (title, author_id, series_id) values('A Court of Silver Flames', 1, 1);
+
+insert into books (title, author_id, series_id) values('The Hunger Games', 2, 2);
+insert into books (title, author_id, series_id) values('Catching Fire', 2, 2);
+insert into books (title, author_id, series_id) values('Mockingjay', 2, 2);
+
+insert into books (title, author_id, series_id) values('Dune', 3, 3);
+insert into books (title, author_id, series_id) values('Dune Messiah', 3, 3);
+insert into books (title, author_id, series_id) values('Children of Dune', 3, 3);
+insert into books (title, author_id, series_id) values('God Emporer of Dune', 3, 3);
+insert into books (title, author_id, series_id) values('Heretics of Dune', 3, 3);
+insert into books (title, author_id, series_id) values('Chapterhouse: Dune', 3, 3);
+
+
+--Using JOIN, I've combined these table to make them more legible for human to read.
+
+--What is the author's name and title of all books?
+select authors.fullname, books.title from books join authors on authors.id=books.author_id;
+
+--Show the author's name, series name, and genre of all series.
+select authors.fullname, series.name, authors.genre from authors join series on authors.id=series.author_id;
+
+--Show the author's name, title of book, title of series, and genre of all books.
+select authors.fullname, books.title, series.name as series_title, authors.genre from authors
+join series on series.author_id=authors.id
+join books on books.author_id=authors.id;
