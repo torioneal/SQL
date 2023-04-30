@@ -1,5 +1,4 @@
-select * from BIT_DB.JanSales limit 20;
-select * from BIT_DB.customers;
+#In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data.
 
 --How many orders were placed in January?
 select count(orderID) 
