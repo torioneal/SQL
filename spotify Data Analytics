@@ -78,3 +78,12 @@ limit 1;
 select artist_name, count(track_name)
 from BIT_DB.Spotifydata
 where artist_name = 'Lil Nas X';
+
+--Calculate the average popularity for the artists in the Spotify data table. Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.
+with Avg_Popularity_CTE as (
+    select s.artist_name, avg(s.popularity) as avg_pop
+    from Spotifydata s
+    group by s.artist_name)
+    select artist_name, avg_pop, 'Top Star' as tag
+    from Avg_Popularity_CTE 
+    where avg_pop >= 90;
